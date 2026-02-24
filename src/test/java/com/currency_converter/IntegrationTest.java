@@ -1,9 +1,9 @@
 package com.currency_converter;
+import com.currency_converter.model.ConversionCurrency;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-@TestPropertySource("classpath::application.properties")
 public class IntegrationTest {
 
 
@@ -27,8 +26,14 @@ public class IntegrationTest {
 
     @Test
     public void ConvertShouldBeSuccessful(){
-        String url=basePath+"/convert?from=EUR&to=USD&amount=100";
-        Double response=restTemplate.getForObject(url,Double.class);
+        String url = basePath + "/api/currency-converter";
+        ConversionCurrency request =
+                new ConversionCurrency("EUR","USD",100);
+        Double response = restTemplate.postForObject(
+                url,
+                request,
+                Double.class
+        );
         assertNotNull(response);
     }
 

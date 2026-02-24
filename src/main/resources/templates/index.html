@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Currency Converter</title>
+
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Currency Converter</h2>
+
+        <label>From Currency</label>
+        <select id="fromCurrency"></select>
+
+
+        <label>To Currency</label>
+        <select id="toCurrency"></select>
+
+
+        <label>Amount</label>
+        <input
+                type="number"
+                id="amount"
+                value="1"
+        />
+
+
+        <button onclick="convert()">
+            Convert
+        </button>
+
+
+        <p id="loading"></p>
+
+        <h3 id="result">
+            Result:
+        </h3>
+
+        <p id="error"></p>
+
+    </div>
+
+</div>
+
+<script th:src="@{/script.js}"></script>
+
+</body>
+</html>
