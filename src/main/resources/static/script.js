@@ -61,13 +61,13 @@ function convert() {
             "Content-Type": "application/json"
         },
 
-        body: JSON.stringify({
+       body: JSON.stringify({
 
-            fromCurrency: from,
-            toCurrency: to,
-            amount: amount
+           from: from,
+           to: to,
+           value: amount
 
-        })
+       })
 
     })
         .then(response => {

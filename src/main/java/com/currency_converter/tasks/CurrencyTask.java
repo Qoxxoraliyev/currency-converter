@@ -19,7 +19,7 @@ public class CurrencyTask {
     @Value("${fixer.api.url}")
     private String fixedToApiKey;
 
-    @Scheduled(fixedRate = 5*1000*60*60)
+    @Scheduled(fixedRate = 30*60*1000)
     private void getRatesTask(){
         try {
             RestTemplate restTemplate=new RestTemplate();
